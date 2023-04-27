@@ -1,19 +1,25 @@
 import React from 'react';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import Navbar from './navbar/navbar';
+import Studies from './studies/studies';
+import Projects from './projects/projects';
+import Resume from './resume/resume';
 
-interface ContentProps {
-    isExpanded: boolean;
-}
-
-const Content: React.FC<ContentProps> = ({ isExpanded }) => {
+const Content: React.FC = () => {
     return (
         <div
-            className={`flex-1 h-screen transition-all duration-500 ease-in-out ${isExpanded ? 'w-4/5' : 'w-19/20'
-                }`}
+            className={`flex-col h-full flex-1`}
         >
-            <div className="h-full flex items-center justify-center">
-                <h1 className="text-3xl font-bold">Content</h1>
-            </div>
-        </div>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Navbar />} >
+                        <Route index element={<Resume />} />
+                        <Route path="studies" element={<Studies />} />
+                        <Route path="projects" element={<Projects />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </div >
     );
 };
 

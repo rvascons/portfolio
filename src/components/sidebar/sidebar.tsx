@@ -1,43 +1,30 @@
-import React from 'react';
-
-interface SidebarProps {
-    isExpanded: boolean;
-    toggleSidebar: () => void;
-}
-
+import React, { useState } from 'react';
 
 const SidebarExpanded: React.FC = () => {
     return (
-        <div className="h-full w-full flex justify-center items-center">
-            <h1 className="text-2xl font-bold">Rafael Vasconcelos</h1>
-        </div>
+        <div className=" rounded-xl h-full border-stone-800 border-4" />
     );
 };
 
 const SidebarCollapsed: React.FC = () => {
     return (
-        <div className="h-full flex flex-col justify-center items-center space-y-2">
-            <h1 className="text-2xl font-bold p-2">P</h1>
-            <h1 className="text-2xl font-bold p-2">R</h1>
-            <h1 className="text-2xl font-bold p-2">O</h1>
-            <h1 className="text-2xl font-bold p-2">F</h1>
-            <h1 className="text-2xl font-bold p-2">I</h1>
-            <h1 className="text-2xl font-bold p-2">L</h1>
-            <h1 className="text-2xl font-bold p-2">E</h1>
-        </div>
+        <div className=" rounded-xl h-full border-stone-800 border-4" />
     );
 };
 
-const Sidebar: React.FC<SidebarProps> = ({ isExpanded, toggleSidebar }) => {
+const Sidebar: React.FC = () => {
+    const [isExpanded, setIsExpanded] = useState(true);
+
+    const toggleSidebar = () => {
+        setIsExpanded(!isExpanded);
+    };
+
     return (
         <div
             onClick={toggleSidebar}
-            className={`flex left-0 h-screen bg-blue-500 overflow-hidden text-white transition-all duration-1000 ease-in-out shadow-lg rounded-r-lg ${isExpanded ? 'w-1/5' : 'w-1/20'
-                }`}
+            className={`h-full rounded-xl bg-slate-500 transition-all duration-300 ease-linear ${isExpanded ? "w-44" : "w-10"}`}
         >
-            <div className="h-full flex items-center">
-                {isExpanded ? <SidebarExpanded /> : <SidebarCollapsed />}
-            </div>
+            {isExpanded ? <SidebarExpanded /> : <SidebarCollapsed />}
         </div>
     );
 };
