@@ -1,6 +1,6 @@
 const Studies: React.FC = () => {
     return (
-        <div className="h-full bg-green-600 border-stone-800 border-4 rounded-xl" />
+        <div className="grid gap-y-4 h-full bg-green-600 border-stone-800 border-4 rounded-xl shadow-inner shadow-slate-900" />
     );
 }
 
